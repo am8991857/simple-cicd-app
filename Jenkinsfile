@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PYTHON = 'C:\\Users\\Abd El-Rahman\\AppData\\Local\\Programs\\Python\\Python311\\python.exe'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -10,7 +14,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'py -m venv venv'
+                bat '"%PYTHON%" -m venv venv'
                 bat 'venv\\Scripts\\pip install -r requirements.txt'
             }
         }

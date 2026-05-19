@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'python -m venv venv'
+                bat 'py -m venv venv'
                 bat 'venv\\Scripts\\pip install -r requirements.txt'
             }
         }
@@ -23,7 +23,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'start /B python app.py'
+                bat 'start /B venv\\Scripts\\python app.py'
             }
         }
     }
